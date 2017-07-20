@@ -33,7 +33,7 @@ you will see message =>  * Running on http://0.0.0.0:9455/ (Press CTRL+C to quit
 please do not close terminal !
 
 4. Use browser ( mobile style friendly) to visit host: http://10.36.161.199/eye4cash/ and upload photo get the answer.
-![image](https://github.com/KnifeLi/eye4cash/blob/master/screenshot/IndexView.JPG?raw=true)
+![image](https://github.com/KnifeLi/eye4cash/blob/master/screenshot/View.JPG?raw=true)
 
 # Train Your Model Step
 1. Entry docker (same Test step 1&2)
