@@ -1,4 +1,4 @@
-# Project name: eye4cash
+# eye4cash
 Object detect and classification US Dollar
 
 # DataSet and Code
@@ -54,3 +54,6 @@ We only use 2 layer conv and 3 class dataset include of 1 cent: 1891 files, 10 c
 Reshape to 208x208 size, training 10,000 step.
 Although accuracy is 99% but is not really on the real case,I am test of 15 photos and accuracy is 80%....
 I think it can add more dataset to increase real accuracy in future, prevent over fitting...
+
+# Reference
+- TensorFlow-tutorials https://github.com/kevin28520/My-TensorFlow-tutorials
