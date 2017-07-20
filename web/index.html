@@ -1,0 +1,117 @@
+
+ <!DOCTYPE html>
+  <html>
+    <head>
+      <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	  
+	  <!--Import jQuery before materialize.js-->
+      <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	  
+	  <!-- Compiled and minified CSS -->
+	  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.0/css/materialize.min.css">
+	  <link rel="stylesheet" href="template.css">
+
+	  <!-- Compiled and minified JavaScript -->
+	  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.0/js/materialize.min.js"></script>
+	  <script src="eye4Cash.js"></script>
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	  
+	  <!-- Web Information -->
+	  <title> eye4Cash </title>
+	  <meta name="author" content="Knife.Li">
+	  <meta name="keywords" content="TensorFlow,CashDetect,ObjectDetection">
+    </head>
+
+    <body>
+		  <nav class="orange">
+			<div class="nav-wrapper">
+			  <a href="index.html" class="brand-logo" id="banner"> <img src="images/if_Finance_market_vision_1889196.png" width="32"/> eye4Cash</a>
+			  <ul id="nav-mobile" class="right hide-on-med-and-down">
+				<li style="margin-right:20px;">Beta 1.0</li>
+			  </ul>
+			</div>
+		  </nav>
+		
+		<div id="main">
+			<p style="font-size:18px;"> <i class="small material-icons">chevron_right</i> Hey eye4Cash ...</p>
+			<p style="font-size:18px;"> <i class="small material-icons">chevron_right</i> How many money are there in the photo?</p>
+			<div class="fixed-action-btn toolbar">
+				<a class="btn-floating btn-large orange" onClick="showDescription();">
+				  <i class="large material-icons">priority_high</i>
+				</a>
+				<ul>
+				  <li class="waves-effect waves-light">
+					<p> More information see my github </p>
+				  </li>
+				</ul>
+			</div>
+			<form action="#" class="form">
+				<div class="file-field input-field" id="fileSelectInput">
+				  <div class="btn orange accent-4" style="width:50%; margin-left:10%;">
+					<span><i class="large material-icons left">camera</i>Camera</span>
+					<input type="file" accept="image/*">
+				  </div>
+				  <div class="file-path-wrapper">
+					<input class="file-path validate" type="text" placeholder="Launch Camera or Select a Photo upload." style="width:1px;">
+				  </div>
+				</div>
+				<input type="hidden" id="form_fileURL"/>
+				<button class="btn" id="btnStart" style="display:none;" Onclick="uploadPrediction();">Start Predict</button>
+				<div id="loadingIcon" style="display:none;"><img src="images/Ellipsis.gif" width="64"> Loading... Please wait !!!</div>
+			</form>
+			<p id="answerString"></p>
+			<img class="preview" width="30%" >
+		</div>
+    </body>
+	<script>
+    //Upload file thumbnail
+	   /* hook file upload photo*/
+		;( function ( document, window, index )
+		{
+			// applying the effect for every form, hook form class name ="form-group"
+			var forms = document.querySelectorAll( '.form' );
+			Array.prototype.forEach.call( forms, function( form )
+			{
+				var input		 = form.querySelector( 'input[type="file"]' ),
+					showFiles	 = function( files )
+					{
+						//reload thumbnail
+						var reader = new FileReader();
+						reader.onload = function (e) {
+							var dataURL = e.target.result;
+							//write photo dataURL value to text input
+							$("#form_fileURL").val(dataURL);
+							$("#fileSelectInput").hide();
+							$("#btnStart").show();
+							$("#answerString").text("");
+							$('.preview').attr('src', e.target.result);
+						}
+						reader.readAsDataURL(files[0]);
+					}
+
+				// letting the server side to know we are going to make an Ajax request
+				var ajaxFlag = document.createElement( 'input' );
+				ajaxFlag.setAttribute( 'type', 'hidden' );
+				ajaxFlag.setAttribute( 'name', 'ajax' );
+				ajaxFlag.setAttribute( 'value', 1 );
+				form.appendChild( ajaxFlag );
+
+				// automatically submit the form on file select
+				input.addEventListener( 'change', function( e )
+				{
+					showFiles( e.target.files );
+				});
+
+				// Firefox focus bug fix for file input
+				input.addEventListener( 'focus', function(){ input.classList.add( 'has-focus' ); });
+				input.addEventListener( 'blur', function(){ input.classList.remove( 'has-focus' ); });
+
+			});
+
+		}( document, window, 0 ));
+
+	</script>
+</html>   
