@@ -1,5 +1,5 @@
 # Project name: eye4cash
-Object detect and classification US&amp;Taiwan Dollar
+Object detect and classification US Dollar
 
 # DataSet and Code
 1. Call the Microfost's Bing search api to download images and reviewed it by myself.
@@ -8,12 +8,12 @@ Object detect and classification US&amp;Taiwan Dollar
 4. DataSet save in "/raidHDD/experimentData/Dev/Knife/hackthon/upup7"
 5. train script is "/raidHDD/experimentData/Dev/Knife/hackthon/KnifeHackthonCoin_train.py"
 
-#Architecture
+# Architecture
 1. Client: WebUI (html, javascript, jQuery, PHP)
 2. Server: Python Flask 0.12 Framework
 3. Deep Learning: Google TensorFlow
  
-# Test on Dev Envirment step
+# Test on Dev Environment step
 1. Check docker's name "TF_gpu1_knife" is start.
 ```shell
 $ docker ps -a
@@ -36,7 +36,7 @@ please do not close terminal !
 
 
 # Train Your Model Step
-1. Entry docker
+1. Entry docker (same Test step 1&2)
 
 2. check training dataset is exists "/raidHDD/experimentData/Dev/Knife/hackthon/upup7"
 
@@ -47,10 +47,10 @@ $ python KnifeHackthonCoin_train.py
 ```
 you will see each loss and accuracy...
 
-4.When step is equal 10000,It will save final model in "/raidHDD/experimentData/Dev/Knife/hackthon/modelX"
+4. When step is equal 10000 it will stop and save model in "/raidHDD/experimentData/Dev/Knife/hackthon/modelX"
 
 # Explanation of the approach
 We only use 2 layer conv and 3 class dataset include of 1 cent: 1891 files, 10 cent: 1472 files, 25 cent: 1322 files.
 Reshape to 208x208 size, training 10,000 step.
-Although accuracy is 99% but is not really on the real case,I test 15 photos  accuracy is 80%....
-I think it can add more dataset to increase real accuracy, prevent over fitting...
+Although accuracy is 99% but is not really on the real case,I am test of 15 photos and accuracy is 80%....
+I think it can add more dataset to increase real accuracy in future, prevent over fitting...
